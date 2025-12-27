@@ -260,4 +260,11 @@
     .slider-wrapper .slider-item .slide-content > * {
         max-width: 100%;
     }
+
+    .slider-wrapper .slider-item:nth-child(3)::before {
+        background: linear-gradient(rgba(8, 0, 58, .7), rgba(8, 0, 58, .7)), 
+        url("img/hamilton-responsive.jpg");
+        background-size: cover;
+        background-position: center;
+    }       
 }
