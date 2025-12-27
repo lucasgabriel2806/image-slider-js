@@ -5,12 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Image Slider</title>
     <link rel="stylesheet" href="style.css">
+    <!-- Swiper CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.css">
 </head>
 <body>
 
     <div class="slider-container">
-        <div class="slider-wrapper">
-            <div class="slider-item">
+        <div class="slider-wrapper swiper-wrapper">
+            <div class="slider-item swiper-slide">
                 <div class="slide-content">
                     <h3 class="slide-subtitle">Slide 01</h3>
                     <h2 class="slide-title">Ayrton Senna Da Silva | Mclaren</h2>
@@ -18,7 +20,7 @@
                     <a href="#" class="slide-button"><span>Learn More</span></a>
                 </div>
             </div>
-            <div class="slider-item">
+            <div class="slider-item swiper-slide">
                 <div class="slide-content">
                     <h3 class="slide-subtitle">Slide 02</h3>
                     <h2 class="slide-title">Ayrton Senna Da Silva | Mclaren</h2>
@@ -26,7 +28,7 @@
                     <a href="#" class="slide-button"><span>Learn More</span></a>
                 </div>
             </div>
-            <div class="slider-item">
+            <div class="slider-item swiper-slide">
                 <div class="slide-content">
                     <h3 class="slide-subtitle">Slide 03</h3>
                     <h2 class="slide-title">Ayrton Senna Da Silva | Mclaren</h2>
@@ -34,7 +36,7 @@
                     <a href="#" class="slide-button"><span>Learn More</span></a>
                 </div>
             </div>
-            <div class="slider-item">
+            <div class="slider-item swiper-slide">
                 <div class="slide-content">
                     <h3 class="slide-subtitle">Slide 04</h3>
                     <h2 class="slide-title">Ayrton Senna Da Silva | Mclaren</h2>
@@ -45,5 +47,10 @@
         </div>
     </div>
     
+    <!-- Swiper Script -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.js"></script>
+
+    <!-- Custom Script -->
+    <script src="script.js"></script>
 </body>
 </html>
