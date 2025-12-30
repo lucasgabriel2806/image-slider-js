@@ -1,37 +1,49 @@
+// Seleciona todas as tabs
 const sliderTabs = document.querySelectorAll(".slider-tab");
+
+// Indicador animado
 const sliderIndicator = document.querySelector(".slider-indicator");
+
+// Container da paginação
 const sliderControls = document.querySelector(".slider-controls");
 
-// Update the indicator height and width
+// Atualiza posição do indicador
 const updateIndicator = (tab, index) => {
     sliderIndicator.style.transform = `translateX(${tab.offsetLeft - 20}px)`;
-    sliderIndicator.style.width = `${tab.getBoundingClientRect().width}px`;
+    sliderIndicator.style.width = `${tab.offsetWidth}px`;
 
-    // Calculate the scroll position and scroll smoothly
-    const scrollLeft = sliderTabs[index].offsetLeft - sliderControls.offsetWidth / 2 + sliderTabs[index].offsetWidth / 2;
-    sliderControls.scrollTo({ left: scrollLeft, behavior: "smooth" });
-}
+    // Centraliza o item clicado
+    const scrollLeft =
+        tab.offsetLeft -
+        sliderControls.offsetWidth / 2 +
+        tab.offsetWidth / 2;
 
-// Initialize swiper instance
+    sliderControls.scrollTo({
+        left: scrollLeft,
+        behavior: "smooth"
+    });
+};
+
+// Inicializa o Swiper
 const swiper = new Swiper('.slider-container', {
-  effect: "fade", // slide
-  speed: 1300,
-  autoplay: { delay: 4000 },
-  navigation: {
-    prevEl: "#slide-prev",
-    nextEl: "#slide-next"
-  },
-  on: {
-    // Update the indicator on slide change
-    slideChange: () => {
-        const currentTabIndex = [...sliderTabs].indexOf(sliderTabs[swiper.activeIndex]);
-        updateIndicator(sliderTabs[swiper.activeIndex], currentTabIndex);
+    effect: "fade",
+    speed: 1300,
+    autoplay: { delay: 4000 },
+
+    navigation: {
+        prevEl: "#slide-prev",
+        nextEl: "#slide-next"
     },
-    reachEnd: () => swiper.autoplay.stop()
-  }
+
+    on: {
+        slideChange: () => {
+            updateIndicator(sliderTabs[swiper.activeIndex], swiper.activeIndex);
+        },
+        reachEnd: () => swiper.autoplay.stop()
+    }
 });
 
-// Update the slide and indicator on tab click
+// Clique nas tabs
 sliderTabs.forEach((tab, index) => {
     tab.addEventListener("click", () => {
         swiper.slideTo(index);
@@ -39,5 +51,10 @@ sliderTabs.forEach((tab, index) => {
     });
 });
 
+// Inicializa o indicador
 updateIndicator(sliderTabs[0], 0);
-window.addEventListener("rezise", () => updateIndicator(sliderTabs[swiper.activeIndex], 0));
+
+// Atualiza ao redimensionar
+window.addEventListener("resize", () => {
+    updateIndicator(sliderTabs[swiper.activeIndex], swiper.activeIndex);
+});
